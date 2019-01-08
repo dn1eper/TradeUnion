@@ -26,7 +26,6 @@ namespace TradeUnion
             }
             else
             {
-                // Создаем базу данных с табличками
                 SQLite3.Config(SQLite3.ConfigOption.Serialized);
                 DB = new SQLiteConnection(file);
                 DB.CreateTable<Employee>();
@@ -39,11 +38,19 @@ namespace TradeUnion
             return DB.Query<Employee>("select * from Employee");
         }
 
-        public int addEmployee(Employee emp)
+        public int insert(object obj)
         {
-            int id = DB.Insert(emp);
-            emp.ID = id;
-            return id;
+            return DB.Insert(obj);
+        }
+
+        public int update(object obj)
+        {
+            return DB.Update(obj);
+        }
+
+        public int delete(object obj)
+        {
+            return DB.Delete(obj);
         }
 
         public void Dispose()

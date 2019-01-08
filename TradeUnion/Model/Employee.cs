@@ -16,6 +16,11 @@ namespace TradeUnion.Model
         [MaxLength(50)]
         public string Inn { get; set; }
         
+        public bool Like(string str)
+        {
+            return ToString().Contains(str);
+        }
+
         public override bool Equals(object obj)
         {
             return obj is Employee && obj.GetHashCode() == GetHashCode();
