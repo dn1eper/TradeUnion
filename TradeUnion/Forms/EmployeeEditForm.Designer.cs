@@ -34,7 +34,7 @@
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.innTextBox = new System.Windows.Forms.TextBox();
-            this.SaveButton = new System.Windows.Forms.Button();
+            this.saveEmpBtn = new System.Windows.Forms.Button();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             CancelButton = new System.Windows.Forms.Button();
@@ -71,7 +71,7 @@
             // 
             CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            CancelButton.Location = new System.Drawing.Point(193, 86);
+            CancelButton.Location = new System.Drawing.Point(232, 86);
             CancelButton.Margin = new System.Windows.Forms.Padding(4);
             CancelButton.Name = "CancelButton";
             CancelButton.Size = new System.Drawing.Size(90, 30);
@@ -83,15 +83,15 @@
             // 
             this.tableLayoutPanel.ColumnCount = 4;
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 159F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 99F));
             this.tableLayoutPanel.Controls.Add(label1, 0, 0);
             this.tableLayoutPanel.Controls.Add(label2, 0, 1);
             this.tableLayoutPanel.Controls.Add(this.nameTextBox, 1, 0);
             this.tableLayoutPanel.Controls.Add(this.innTextBox, 1, 1);
             this.tableLayoutPanel.Controls.Add(CancelButton, 2, 2);
-            this.tableLayoutPanel.Controls.Add(this.SaveButton, 3, 2);
+            this.tableLayoutPanel.Controls.Add(this.saveEmpBtn, 3, 2);
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
@@ -101,7 +101,7 @@
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(396, 126);
+            this.tableLayoutPanel.Size = new System.Drawing.Size(432, 126);
             this.tableLayoutPanel.TabIndex = 1;
             // 
             // nameTextBox
@@ -112,9 +112,9 @@
             this.nameTextBox.Location = new System.Drawing.Point(71, 10);
             this.nameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(314, 24);
+            this.nameTextBox.Size = new System.Drawing.Size(350, 24);
             this.nameTextBox.TabIndex = 1;
-            this.nameTextBox.TextChanged += new System.EventHandler(this.OnChanged);
+            this.nameTextBox.TextChanged += new System.EventHandler(this.OnEmployeeChanged);
             // 
             // innTextBox
             // 
@@ -124,28 +124,28 @@
             this.innTextBox.Location = new System.Drawing.Point(71, 44);
             this.innTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.innTextBox.Name = "innTextBox";
-            this.innTextBox.Size = new System.Drawing.Size(314, 24);
+            this.innTextBox.Size = new System.Drawing.Size(350, 24);
             this.innTextBox.TabIndex = 2;
             // 
-            // SaveButton
+            // saveEmpBtn
             // 
-            this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.SaveButton.Enabled = false;
-            this.SaveButton.Location = new System.Drawing.Point(295, 86);
-            this.SaveButton.Margin = new System.Windows.Forms.Padding(4);
-            this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(90, 30);
-            this.SaveButton.TabIndex = 4;
-            this.SaveButton.Text = "Сохранить";
-            this.SaveButton.UseVisualStyleBackColor = true;
-            this.SaveButton.Click += new System.EventHandler(this.OnChangesAccepted);
+            this.saveEmpBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.saveEmpBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.saveEmpBtn.Enabled = false;
+            this.saveEmpBtn.Location = new System.Drawing.Point(331, 86);
+            this.saveEmpBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.saveEmpBtn.Name = "saveEmpBtn";
+            this.saveEmpBtn.Size = new System.Drawing.Size(90, 30);
+            this.saveEmpBtn.TabIndex = 4;
+            this.saveEmpBtn.Text = "Сохранить";
+            this.saveEmpBtn.UseVisualStyleBackColor = true;
+            this.saveEmpBtn.Click += new System.EventHandler(this.OnChangesAccepted);
             // 
             // EmployeeEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(396, 126);
+            this.ClientSize = new System.Drawing.Size(432, 126);
             this.Controls.Add(this.tableLayoutPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -164,6 +164,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.TextBox innTextBox;
-        private System.Windows.Forms.Button SaveButton;
+        private System.Windows.Forms.Button saveEmpBtn;
     }
 }

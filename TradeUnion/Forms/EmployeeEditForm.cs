@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TradeUnion.Model;
 using TradeUnion.Extensions;
@@ -47,9 +40,9 @@ namespace TradeUnion.Forms
             Employee.Inn = innTextBox.Text;
         }
 
-        private void OnChanged(object sender, EventArgs e)
+        private void OnEmployeeChanged(object sender, EventArgs e)
         {
-            SaveButton.Enabled = !nameTextBox.Text.IsEmpty();
+            saveEmpBtn.Enabled = !nameTextBox.Text.IsEmpty();
         }
     }
 }
