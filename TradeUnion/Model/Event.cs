@@ -3,7 +3,7 @@ using SQLite;
 
 namespace TradeUnion.Model
 {
-    [Serializable]
+    [Table("Event")]
     class Event
     {
         [PrimaryKey, AutoIncrement, Unique]
@@ -15,7 +15,7 @@ namespace TradeUnion.Model
         [NotNull]
         public int Sum { get; set; }
         [NotNull]
-        public int EmployeeID { get; set; }     
+        public int EmployeeID { get; set; }
 
         public override bool Equals(object obj)
         {

@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TradeUnion.Extensions;
 using TradeUnion.Model;
@@ -16,20 +11,25 @@ namespace TradeUnion.Forms
     {
         private EmployeeEditForm employeeEditor { get; set; }
         private EventEditForm eventEditor { get; set; }
+        private EventTableForm eventTable { get; set; }
         private Storage storage { get; set; }
         private List<Employee> employees { get; set; }
 
         public Main()
         {
+            // initialize all components
+            storage = new Storage();
             employeeEditor = new EmployeeEditForm();
             eventEditor = new EventEditForm();
-            storage = new Storage();
+            eventTable = new EventTableForm(storage);
             InitializeComponent();
+            // get data from db
             employees = storage.getAllEmployee();
             employees.ForEach(emp =>
             {
                 empListBox.Items.Add(emp);
             });
+            eventTable.Event = storage.getAllEvent();
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -38,23 +38,16 @@ namespace TradeUnion.Forms
             storage.Dispose();
             base.OnClosing(e);
         }
-        //?
-        private void OnShowEmployee(object sender, EventArgs e)
+
+        private void OnExit(object sender, EventArgs e)
         {
-            empGroupBox.Visible = true;
-        }
-        //?
-        private void OnShowEvent(object sender, EventArgs e)
-        {
-            empGroupBox.Visible = false;
+            Close();
         }
 
-        #region Employee
         private void OnEmployeeSelectionChanged(object sender, EventArgs e)
         {
             editEmployee.Enabled = deleteEmployee.Enabled = createEvent.Enabled = empListBox.SelectedItem != null;
         }
-
 
         private void OnCreateEmployee(object sender, EventArgs e)
         {
@@ -96,16 +89,14 @@ namespace TradeUnion.Forms
             });
         }
 
-        private void OnSerchEmployeeKetEnter(object sender, KeyEventArgs e)
+        private void OnSerchEmployeeKeyEnter(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 OnSearchEmployee(sender, e);
             }
         }
-        #endregion
 
-        #region Event
         private void OnCreateEvent(object sender, EventArgs e)
         {
             eventEditor.Employee = empListBox.SelectedItem as Employee;
@@ -113,11 +104,13 @@ namespace TradeUnion.Forms
             if (eventEditor.ShowDialog() == DialogResult.OK)
             {
                 storage.insert(eventEditor.Event);
-                
+                eventTable.Event.Add(new ExtendedEvent(eventEditor.Event, eventEditor.Employee));
             }
         }
-        #endregion
 
-
+        private void OnShowEventTable(object sender, EventArgs e)
+        {
+            eventTable.ShowDialog();
+        }
     }
 }

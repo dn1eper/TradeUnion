@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SQLite;
-using TradeUnion.Model;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
+using TradeUnion.Model;
 
 namespace TradeUnion
 {
@@ -26,7 +26,6 @@ namespace TradeUnion
             }
             else
             {
-                SQLite3.Config(SQLite3.ConfigOption.Serialized);
                 DB = new SQLiteConnection(file);
                 DB.CreateTable<Employee>();
                 DB.CreateTable<Event>();
@@ -35,7 +34,16 @@ namespace TradeUnion
 
         public List<Employee> getAllEmployee()
         {
-            return DB.Query<Employee>("select * from Employee");
+            return DB.Query<Employee>("SELECT * FROM Employee");
+        }
+
+        public List<ExtendedEvent> getAllEvent()
+        {
+            return DB.Query<ExtendedEvent>(
+                "SELECT Event.ID ID, Title, Date, Sum, Employee.Name EmployeeName, Employee.Inn EmployeeInn, Employee.ID EmployeeID " +
+                "FROM Event " +
+                "LEFT JOIN Employee ON Event.EmployeeID = Employee.ID"
+            );
         }
 
         public int insert(object obj)

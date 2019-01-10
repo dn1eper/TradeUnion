@@ -1,12 +1,8 @@
-﻿using System;
-using System.Data.SQLite.Generic;
-using System.Data.SQLite.EF6;
-using System.Data.SQLite.Linq;
-using System.Data.SQLite;
-using SQLite;
+﻿using SQLite;
 
 namespace TradeUnion.Model
 {
+    [Table("Employee")]
     class Employee
     {
         [PrimaryKey, AutoIncrement, Unique]
@@ -15,11 +11,6 @@ namespace TradeUnion.Model
         public string Name { get; set; }
         [MaxLength(50)]
         public string Inn { get; set; }
-        
-        public bool Like(string str)
-        {
-            return ToString().Contains(str);
-        }
 
         public override bool Equals(object obj)
         {
