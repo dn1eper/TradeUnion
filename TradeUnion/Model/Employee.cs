@@ -11,6 +11,8 @@ namespace TradeUnion.Model
         public string Name { get; set; }
         [MaxLength(50)]
         public string Inn { get; set; }
+        [NotNull]
+        public int IsFired { get; set; } = 0;
 
         public override bool Equals(object obj)
         {

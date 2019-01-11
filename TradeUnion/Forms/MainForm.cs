@@ -24,12 +24,12 @@ namespace TradeUnion.Forms
             eventTable = new EventTableForm(storage);
             InitializeComponent();
             // get data from db
-            employees = storage.getAllEmployee();
+            employees = storage.GetAllEmployee();
             employees.ForEach(emp =>
             {
                 empListBox.Items.Add(emp);
             });
-            eventTable.Event = storage.getAllEvent();
+            eventTable.Event = storage.GetAllEvent();
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -55,7 +55,7 @@ namespace TradeUnion.Forms
             if (employeeEditor.ShowDialog() == DialogResult.OK)
             {
                 empListBox.Items.Add(employeeEditor.Employee);
-                storage.insert(employeeEditor.Employee);
+                storage.Insert(employeeEditor.Employee);
             }
         }
 
@@ -65,7 +65,7 @@ namespace TradeUnion.Forms
             if (employeeEditor.ShowDialog() == DialogResult.OK)
             {
                 empListBox.UpdateSelectedItem();
-                storage.update(employeeEditor.Employee);
+                storage.Update(employeeEditor.Employee);
             }
         }
 
@@ -73,7 +73,9 @@ namespace TradeUnion.Forms
         {
             if (MessageBox.Show("Вы уверены что хотите удалить сотрудника " + empListBox.SelectedItem.ToString(), "Удаление", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                storage.delete(empListBox.SelectedItem as Employee);
+                Employee emp = empListBox.SelectedItem as Employee;
+                emp.IsFired = 1;
+                storage.Update(emp);
                 empListBox.DeleteSelectedItems();
             }
         }
@@ -103,7 +105,7 @@ namespace TradeUnion.Forms
             eventEditor.Event = null;
             if (eventEditor.ShowDialog() == DialogResult.OK)
             {
-                storage.insert(eventEditor.Event);
+                storage.Insert(eventEditor.Event);
                 eventTable.Event.Add(new ExtendedEvent(eventEditor.Event, eventEditor.Employee));
             }
         }

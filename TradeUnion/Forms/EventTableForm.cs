@@ -9,12 +9,12 @@ namespace TradeUnion.Forms
     partial class EventTableForm : Form
     {
         public List<ExtendedEvent> Event;
-        private List<ExtendedEvent> findEvent;
-        private Storage storage;
+        private List<ExtendedEvent> _findEvent;
+        private readonly Storage _storage;
 
-        public EventTableForm(Storage stor)
+        public EventTableForm(Storage storage)
         {
-            storage = stor;
+            _storage = storage;
             InitializeComponent();
         }
 
@@ -26,26 +26,26 @@ namespace TradeUnion.Forms
 
         private void OnSearchEvent(object sender, EventArgs e)
         {
-            findEvent = new List<ExtendedEvent>();
+            _findEvent = new List<ExtendedEvent>();
             Event.ForEach(ev =>
             {
                 if (ev.Like(SearchTextBox.Text))
                 {
-                    findEvent.Add(ev);
+                    _findEvent.Add(ev);
                 }
             });
-            dataGridView.DataSource = findEvent;
+            dataGridView.DataSource = _findEvent;
         }
 
         private void OnDeleteEvent(object sender, EventArgs e)
         {
             ExtendedEvent selectedExtendedEvent = dataGridView.SelectedRows[0].DataBoundItem as ExtendedEvent;
-            if (MessageBox.Show("Вы уверены что хотите удалить помощь " + selectedExtendedEvent.Title, "Удаление", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show(@"Вы уверены что хотите удалить помощь " + selectedExtendedEvent.Title, @"Удаление", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 Event.Remove(selectedExtendedEvent);
                 dataGridView.DataSource = null;
                 dataGridView.DataSource = Event;
-                storage.delete(selectedExtendedEvent.Event);
+                _storage.Delete(selectedExtendedEvent.Event);
             }
         }
 
@@ -71,15 +71,15 @@ namespace TradeUnion.Forms
             workSheet.Cells[1, 4] = "Сумма";
             workSheet.Cells[1, 5] = "Дата";
 
-            if (findEvent == null) findEvent = Event;
+            if (_findEvent == null) _findEvent = Event;
 
-            for (int i = 2; i <= findEvent.Count; i++)
+            for (int i = 2; i <= _findEvent.Count; i++)
             {
-                workSheet.Cells[i, 1] = findEvent[i - 2].EmployeeName;
-                workSheet.Cells[i, 2] = findEvent[i - 2].EmployeeInn;
-                workSheet.Cells[i, 3] = findEvent[i - 2].Title;
-                workSheet.Cells[i, 4] = findEvent[i - 2].Sum;
-                workSheet.Cells[i, 5] = findEvent[i - 2].Date.ToString("dd.mm.yyyy");
+                workSheet.Cells[i, 1] = _findEvent[i - 2].EmployeeName;
+                workSheet.Cells[i, 2] = _findEvent[i - 2].EmployeeInn;
+                workSheet.Cells[i, 3] = _findEvent[i - 2].Title;
+                workSheet.Cells[i, 4] = _findEvent[i - 2].Sum;
+                workSheet.Cells[i, 5] = _findEvent[i - 2].Date.ToString("dd.mm.yyyy");
             }
             
             // Открываем созданный excel-файл

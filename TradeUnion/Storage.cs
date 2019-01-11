@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using SQLite;
 using System.IO;
-using System.Reflection;S
+using System.Reflection;
 using TradeUnion.Model;
 
 namespace TradeUnion
 {
-    class Storage : IDisposable
+    internal class Storage : IDisposable
     {
         public SQLiteConnection DB;
-        private string path => Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "storage");
-        private string file => Path.Combine(path, "storage.db");
+        private static string path => Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "storage");
+        private static string file => Path.Combine(path, "storage.db");
 
         public Storage()
         {
@@ -28,12 +28,12 @@ namespace TradeUnion
             }
         }
 
-        public List<Employee> getAllEmployee()
+        public List<Employee> GetAllEmployee()
         {
-            return DB.Query<Employee>("SELECT * FROM Employee");
+            return DB.Query<Employee>("SELECT * FROM Employee WHERE IsFired = 0");
         }
 
-        public List<ExtendedEvent> getAllEvent()
+        public List<ExtendedEvent> GetAllEvent()
         {
             return DB.Query<ExtendedEvent>(
                 "SELECT Event.ID ID, Title, Date, Sum, Employee.Name EmployeeName, Employee.Inn EmployeeInn, Employee.ID EmployeeID " +
@@ -42,24 +42,24 @@ namespace TradeUnion
             );
         }
 
-        public int insert(object obj)
+        public int Insert(object obj)
         {
             return DB.Insert(obj);
         }
 
-        public int update(object obj)
+        public int Update(object obj)
         {
             return DB.Update(obj);
         }
 
-        public int delete(object obj)
+        public int Delete(object obj)
         {
             return DB.Delete(obj);
         }
 
         public void Dispose()
         {
-            if (DB != null) DB.Dispose();
+            DB?.Dispose();
         }
     }
 }
