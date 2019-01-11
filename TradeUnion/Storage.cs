@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SQLite;
 using System.IO;
-using System.Reflection;
-using System.Windows.Forms;
+using System.Reflection;S
 using TradeUnion.Model;
 
 namespace TradeUnion
