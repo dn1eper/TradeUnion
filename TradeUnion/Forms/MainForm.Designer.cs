@@ -134,9 +134,9 @@
             // 
             empPlusBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             empPlusBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            empPlusBtn.Location = new System.Drawing.Point(652, 3);
+            empPlusBtn.Location = new System.Drawing.Point(651, 3);
             empPlusBtn.Name = "empPlusBtn";
-            empPlusBtn.Size = new System.Drawing.Size(27, 339);
+            empPlusBtn.Size = new System.Drawing.Size(28, 339);
             empPlusBtn.TabIndex = 4;
             empPlusBtn.Text = "+";
             empPlusBtn.UseVisualStyleBackColor = true;
@@ -148,7 +148,7 @@
             tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.57338F));
             tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.42662F));
             tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 67F));
-            tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             tableLayoutPanel.Controls.Add(this.empListBox, 0, 0);
             tableLayoutPanel.Controls.Add(this.empSearchTextBox, 1, 1);
             tableLayoutPanel.Controls.Add(this.createEvent, 0, 1);
@@ -176,11 +176,11 @@
             this.empListBox.ItemHeight = 22;
             this.empListBox.Location = new System.Drawing.Point(3, 3);
             this.empListBox.Name = "empListBox";
-            this.empListBox.Size = new System.Drawing.Size(643, 334);
+            this.empListBox.Size = new System.Drawing.Size(642, 334);
             this.empListBox.Sorted = true;
             this.empListBox.TabIndex = 1;
             this.empListBox.SelectedIndexChanged += new System.EventHandler(this.OnEmployeeSelectionChanged);
-            this.empListBox.DoubleClick += new System.EventHandler(this.OnEditEmployee);
+            this.empListBox.DoubleClick += new System.EventHandler(this.OnShowEmployeeEvents);
             // 
             // empSearchTextBox
             // 

@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Linq;
 using System.Windows.Forms;
-using Microsoft.Office.Interop.Excel;
 using Excel = Microsoft.Office.Interop.Excel;
 using TradeUnion.Model;
 using TradeUnion.Library;
@@ -14,12 +11,14 @@ namespace TradeUnion.Forms
     partial class EventTableForm : Form
     {
         public List<ExtendedEvent> Event;
+        public Employee Employee;
         private SortableBindingList<ExtendedEvent> _findEvent;
         private readonly Storage _storage;
 
         public EventTableForm(Storage storage)
         {
             _storage = storage;
+            Employee = null;
             InitializeComponent();
         }
 
@@ -30,6 +29,17 @@ namespace TradeUnion.Forms
             dataGridView.DataSource = null;
             dataGridView.DataSource = _findEvent;
             dataGridView.Columns[4].DefaultCellStyle.Format = "MM.yyyy";
+
+            if (Employee != null)
+            {
+                SearchTextBox.Text = Employee.ToString();
+                OnSearchEvent(this, e);
+            }
+            else
+            {
+                SearchTextBox.Text = "";
+            }
+            Employee = null;
         }
 
         private void OnSearchEvent(object sender, EventArgs e)
@@ -57,9 +67,7 @@ namespace TradeUnion.Forms
                     Event.Remove(selectedExtendedEvent);
                     _storage.Delete(selectedExtendedEvent.Event);
                 }
-                
-                dataGridView.DataSource = null;
-                _findEvent = new SortableBindingList<ExtendedEvent>(Event);
+                OnSearchEvent(sender, e);
             }
         }
 

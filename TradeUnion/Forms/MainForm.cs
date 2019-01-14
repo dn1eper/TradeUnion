@@ -126,5 +126,11 @@ namespace TradeUnion.Forms
         {
             eventTable.ShowDialog();
         }
+
+        private void OnShowEmployeeEvents(object sender, EventArgs e)
+        {
+            eventTable.Employee = empListBox.SelectedItem as Employee;
+            eventTable.ShowDialog();
+        }
     }
 }
