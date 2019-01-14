@@ -22,6 +22,7 @@ namespace TradeUnion.Forms
         {
             base.OnShown(e);
             dataGridView.DataSource = Event;
+            dataGridView.Columns[4].DefaultCellStyle.Format = "MM.yyyy";
         }
 
         private void OnSearchEvent(object sender, EventArgs e)

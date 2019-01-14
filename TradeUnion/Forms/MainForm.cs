@@ -29,6 +29,7 @@ namespace TradeUnion.Forms
             {
                 empListBox.Items.Add(emp);
             });
+            //empListBox.
             eventTable.Event = storage.GetAllEvent();
         }
 

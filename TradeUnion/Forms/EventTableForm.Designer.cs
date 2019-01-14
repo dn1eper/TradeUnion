@@ -55,7 +55,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.82007F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 82.17993F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 99F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 104F));
             this.tableLayoutPanel1.Controls.Add(this.dataGridView, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.SearchTextBox, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.button1, 2, 1);
@@ -176,7 +176,7 @@
             this.SearchTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.5F);
             this.SearchTextBox.Location = new System.Drawing.Point(106, 415);
             this.SearchTextBox.Name = "SearchTextBox";
-            this.SearchTextBox.Size = new System.Drawing.Size(473, 29);
+            this.SearchTextBox.Size = new System.Drawing.Size(469, 29);
             this.SearchTextBox.TabIndex = 6;
             // 
             // button1

@@ -60,7 +60,8 @@
             this.editEmployee,
             this.deleteEmployee});
             contextMenuStrip.Name = "contextMenuStrip";
-            contextMenuStrip.Size = new System.Drawing.Size(199, 76);
+            contextMenuStrip.OwnerItem = this.employeeToolStripMenuItem;
+            contextMenuStrip.Size = new System.Drawing.Size(211, 104);
             // 
             // addEmployee
             // 
@@ -82,8 +83,7 @@
             // 
             this.deleteEmployee.Enabled = false;
             this.deleteEmployee.Name = "deleteEmployee";
-            this.deleteEmployee.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.deleteEmployee.Size = new System.Drawing.Size(198, 24);
+            this.deleteEmployee.Size = new System.Drawing.Size(210, 24);
             this.deleteEmployee.Text = "&Удалить";
             this.deleteEmployee.Click += new System.EventHandler(this.OnDeleteEmployee);
             // 

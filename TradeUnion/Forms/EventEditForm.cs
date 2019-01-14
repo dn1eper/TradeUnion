@@ -14,7 +14,7 @@ namespace TradeUnion.Forms
         {
             InitializeComponent();
             dateTimePicker.Format = DateTimePickerFormat.Custom;
-            dateTimePicker.CustomFormat = "dd-MM-yyyy";
+            dateTimePicker.CustomFormat = "MM-yyyy";
         }
 
         protected override void OnShown(EventArgs e)

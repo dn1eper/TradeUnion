@@ -8,7 +8,7 @@ namespace TradeUnion.Model
     {
         [PrimaryKey, AutoIncrement, Unique]
         public int ID { get; set; }
-        [Unique, NotNull]
+        [NotNull]
         public string Title { get; set; }
         [NotNull]
         public DateTime Date { get; set; }
