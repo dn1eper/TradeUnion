@@ -29,7 +29,6 @@ namespace TradeUnion.Forms
             {
                 empListBox.Items.Add(emp);
             });
-            //empListBox.
             eventTable.Event = storage.GetAllEvent();
         }
 
@@ -56,6 +55,7 @@ namespace TradeUnion.Forms
             if (employeeEditor.ShowDialog() == DialogResult.OK)
             {
                 empListBox.Items.Add(employeeEditor.Employee);
+                empListBox.SelectedItem = employeeEditor.Employee;
                 storage.Insert(employeeEditor.Employee);
             }
         }
@@ -114,6 +114,14 @@ namespace TradeUnion.Forms
         private void OnShowEventTable(object sender, EventArgs e)
         {
             eventTable.ShowDialog();
+        }
+
+        private void OnKeyDownListBox(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                OnCreateEmployee(sender, e);
+            }
         }
     }
 }

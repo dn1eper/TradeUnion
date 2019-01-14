@@ -53,5 +53,17 @@ namespace TradeUnion.Forms
                 e.Handled = true;
             }
         }
+
+        private void OnKeyDownEventEditForm(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Close();
+            }
+            else if (e.KeyCode == Keys.Enter && saveEventBtn.Enabled)
+            {
+                OnChangesAccepted(sender, e);
+            }
+        }
     }
 }

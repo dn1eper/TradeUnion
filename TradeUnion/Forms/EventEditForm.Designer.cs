@@ -213,6 +213,7 @@
             this.Name = "EventEditForm";
             this.ShowIcon = false;
             this.Text = "Оказать помощь";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDownEventEditForm);
             tableLayoutPanel.ResumeLayout(false);
             tableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);

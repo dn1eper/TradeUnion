@@ -1,9 +1,10 @@
-﻿using SQLite;
+﻿using System;
+using SQLite;
 
 namespace TradeUnion.Model
 {
     [Table("Employee")]
-    class Employee
+    class Employee : IComparable
     {
         [PrimaryKey, AutoIncrement, Unique]
         public int ID { get; set; }
@@ -22,6 +23,15 @@ namespace TradeUnion.Model
         public override int GetHashCode()
         {
             return ID.GetHashCode();
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (obj is Employee)
+            {
+                return string.Compare(Name, (obj as Employee).Name);
+            }
+            throw new Exception("obj not Employee");
         }
 
         public override string ToString()

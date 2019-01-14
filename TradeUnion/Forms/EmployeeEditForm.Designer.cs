@@ -153,6 +153,7 @@
             this.Name = "EmployeeEditForm";
             this.ShowIcon = false;
             this.Text = "Сотрудник";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDownEmployeeEditForm);
             this.tableLayoutPanel.ResumeLayout(false);
             this.tableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
