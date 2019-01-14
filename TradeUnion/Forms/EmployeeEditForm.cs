@@ -44,17 +44,5 @@ namespace TradeUnion.Forms
         {
             saveEmpBtn.Enabled = !nameTextBox.Text.IsEmpty();
         }
-
-        private void OnKeyDownEmployeeEditForm(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-            {
-                Close();
-            }
-            else if (e.KeyCode == Keys.Enter && saveEmpBtn.Enabled)
-            {
-                OnChangesAccepted(sender, e);
-            }
-        }
     }
 }

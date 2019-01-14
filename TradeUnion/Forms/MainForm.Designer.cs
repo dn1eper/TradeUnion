@@ -36,11 +36,10 @@
             System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
             this.editEmployee = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteEmployee = new System.Windows.Forms.ToolStripMenuItem();
+            this.employeeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.employeeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сотрудникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.empSearchBtn = new System.Windows.Forms.Button();
             this.empListBox = new System.Windows.Forms.ListBox();
             this.empSearchTextBox = new System.Windows.Forms.TextBox();
             this.createEvent = new System.Windows.Forms.Button();
@@ -63,21 +62,20 @@
             this.deleteEmployee});
             contextMenuStrip.Name = "contextMenuStrip";
             contextMenuStrip.OwnerItem = this.employeeToolStripMenuItem;
-            contextMenuStrip.Size = new System.Drawing.Size(199, 76);
+            contextMenuStrip.Size = new System.Drawing.Size(210, 76);
             // 
             // addEmployee
             // 
             addEmployee.Name = "addEmployee";
-            addEmployee.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            addEmployee.Size = new System.Drawing.Size(198, 24);
-            addEmployee.Text = "&Добавить";
+            addEmployee.Size = new System.Drawing.Size(209, 24);
+            addEmployee.Text = "&Добавить   Ctrl + N";
             addEmployee.Click += new System.EventHandler(this.OnCreateEmployee);
             // 
             // editEmployee
             // 
             this.editEmployee.Enabled = false;
             this.editEmployee.Name = "editEmployee";
-            this.editEmployee.Size = new System.Drawing.Size(198, 24);
+            this.editEmployee.Size = new System.Drawing.Size(209, 24);
             this.editEmployee.Text = "&Изменить";
             this.editEmployee.Click += new System.EventHandler(this.OnEditEmployee);
             // 
@@ -85,9 +83,16 @@
             // 
             this.deleteEmployee.Enabled = false;
             this.deleteEmployee.Name = "deleteEmployee";
-            this.deleteEmployee.Size = new System.Drawing.Size(198, 24);
+            this.deleteEmployee.Size = new System.Drawing.Size(209, 24);
             this.deleteEmployee.Text = "&Удалить";
             this.deleteEmployee.Click += new System.EventHandler(this.OnDeleteEmployee);
+            // 
+            // employeeToolStripMenuItem
+            // 
+            this.employeeToolStripMenuItem.DropDown = contextMenuStrip;
+            this.employeeToolStripMenuItem.Name = "employeeToolStripMenuItem";
+            this.employeeToolStripMenuItem.Size = new System.Drawing.Size(72, 24);
+            this.employeeToolStripMenuItem.Text = "&Правка";
             // 
             // menuStrip
             // 
@@ -118,13 +123,6 @@
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.OnExit);
             // 
-            // employeeToolStripMenuItem
-            // 
-            this.employeeToolStripMenuItem.DropDown = contextMenuStrip;
-            this.employeeToolStripMenuItem.Name = "employeeToolStripMenuItem";
-            this.employeeToolStripMenuItem.Size = new System.Drawing.Size(72, 24);
-            this.employeeToolStripMenuItem.Text = "&Правка";
-            // 
             // сотрудникиToolStripMenuItem
             // 
             this.сотрудникиToolStripMenuItem.Name = "сотрудникиToolStripMenuItem";
@@ -136,9 +134,9 @@
             // 
             empPlusBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             empPlusBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            empPlusBtn.Location = new System.Drawing.Point(655, 3);
+            empPlusBtn.Location = new System.Drawing.Point(652, 3);
             empPlusBtn.Name = "empPlusBtn";
-            empPlusBtn.Size = new System.Drawing.Size(24, 339);
+            empPlusBtn.Size = new System.Drawing.Size(27, 339);
             empPlusBtn.TabIndex = 4;
             empPlusBtn.Text = "+";
             empPlusBtn.UseVisualStyleBackColor = true;
@@ -150,9 +148,8 @@
             tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.57338F));
             tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.42662F));
             tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 67F));
-            tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             tableLayoutPanel.Controls.Add(this.empListBox, 0, 0);
-            tableLayoutPanel.Controls.Add(this.empSearchBtn, 2, 1);
             tableLayoutPanel.Controls.Add(this.empSearchTextBox, 1, 1);
             tableLayoutPanel.Controls.Add(this.createEvent, 0, 1);
             tableLayoutPanel.Controls.Add(empPlusBtn, 3, 0);
@@ -167,18 +164,6 @@
             tableLayoutPanel.Size = new System.Drawing.Size(682, 383);
             tableLayoutPanel.TabIndex = 4;
             // 
-            // empSearchBtn
-            // 
-            this.empSearchBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            tableLayoutPanel.SetColumnSpan(this.empSearchBtn, 2);
-            this.empSearchBtn.Location = new System.Drawing.Point(589, 348);
-            this.empSearchBtn.Name = "empSearchBtn";
-            this.empSearchBtn.Size = new System.Drawing.Size(90, 32);
-            this.empSearchBtn.TabIndex = 2;
-            this.empSearchBtn.Text = "Найти";
-            this.empSearchBtn.UseVisualStyleBackColor = true;
-            this.empSearchBtn.Click += new System.EventHandler(this.OnSearchEmployee);
-            // 
             // empListBox
             // 
             this.empListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -191,23 +176,22 @@
             this.empListBox.ItemHeight = 22;
             this.empListBox.Location = new System.Drawing.Point(3, 3);
             this.empListBox.Name = "empListBox";
-            this.empListBox.Size = new System.Drawing.Size(646, 334);
+            this.empListBox.Size = new System.Drawing.Size(643, 334);
             this.empListBox.Sorted = true;
             this.empListBox.TabIndex = 1;
             this.empListBox.SelectedIndexChanged += new System.EventHandler(this.OnEmployeeSelectionChanged);
             this.empListBox.DoubleClick += new System.EventHandler(this.OnEditEmployee);
-            this.empListBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDownListBox);
             // 
             // empSearchTextBox
             // 
-            this.empSearchTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            tableLayoutPanel.SetColumnSpan(this.empSearchTextBox, 3);
+            this.empSearchTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.empSearchTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.5F);
-            this.empSearchTextBox.Location = new System.Drawing.Point(147, 351);
+            this.empSearchTextBox.Location = new System.Drawing.Point(146, 348);
             this.empSearchTextBox.Name = "empSearchTextBox";
-            this.empSearchTextBox.Size = new System.Drawing.Size(435, 29);
+            this.empSearchTextBox.Size = new System.Drawing.Size(533, 29);
             this.empSearchTextBox.TabIndex = 1;
-            this.empSearchTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnSerchEmployeeKeyEnter);
+            this.empSearchTextBox.TextChanged += new System.EventHandler(this.OnSearchEmployee);
             // 
             // createEvent
             // 
@@ -215,7 +199,7 @@
             this.createEvent.Enabled = false;
             this.createEvent.Location = new System.Drawing.Point(3, 348);
             this.createEvent.Name = "createEvent";
-            this.createEvent.Size = new System.Drawing.Size(138, 32);
+            this.createEvent.Size = new System.Drawing.Size(137, 32);
             this.createEvent.TabIndex = 3;
             this.createEvent.Text = "Оказать помощь";
             this.createEvent.UseVisualStyleBackColor = true;
@@ -223,6 +207,7 @@
             // 
             // Main
             // 
+            this.AcceptButton = this.createEvent;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(682, 411);
@@ -250,7 +235,6 @@
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
         private System.Windows.Forms.Button createEvent;
         private System.Windows.Forms.ListBox empListBox;
-        private System.Windows.Forms.Button empSearchBtn;
         private System.Windows.Forms.TextBox empSearchTextBox;
     }
 }

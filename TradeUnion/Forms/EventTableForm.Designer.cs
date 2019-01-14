@@ -72,6 +72,7 @@
             // dataGridView
             // 
             this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToOrderColumns = true;
             this.dataGridView.AutoGenerateColumns = false;
             this.dataGridView.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -94,6 +95,7 @@
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(676, 406);
             this.dataGridView.TabIndex = 0;
+            this.dataGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.OnSortHeaderClick);
             // 
             // iDDataGridViewTextBoxColumn
             // 
@@ -101,6 +103,7 @@
             this.iDDataGridViewTextBoxColumn.HeaderText = "ИД";
             this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
             this.iDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.iDDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             this.iDDataGridViewTextBoxColumn.Width = 40;
             // 
             // titleDataGridViewTextBoxColumn
@@ -109,6 +112,7 @@
             this.titleDataGridViewTextBoxColumn.HeaderText = "Название";
             this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
             this.titleDataGridViewTextBoxColumn.ReadOnly = true;
+            this.titleDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
             // employeeNameDataGridViewTextBoxColumn
             // 
@@ -116,6 +120,7 @@
             this.employeeNameDataGridViewTextBoxColumn.HeaderText = "ФИО";
             this.employeeNameDataGridViewTextBoxColumn.Name = "employeeNameDataGridViewTextBoxColumn";
             this.employeeNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.employeeNameDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             this.employeeNameDataGridViewTextBoxColumn.Width = 120;
             // 
             // employeeInnDataGridViewTextBoxColumn
@@ -124,6 +129,7 @@
             this.employeeInnDataGridViewTextBoxColumn.HeaderText = "ИНН";
             this.employeeInnDataGridViewTextBoxColumn.Name = "employeeInnDataGridViewTextBoxColumn";
             this.employeeInnDataGridViewTextBoxColumn.ReadOnly = true;
+            this.employeeInnDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.employeeInnDataGridViewTextBoxColumn.Width = 80;
             // 
             // dateDataGridViewTextBoxColumn
@@ -132,6 +138,7 @@
             this.dateDataGridViewTextBoxColumn.HeaderText = "Дата";
             this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
             this.dateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dateDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             this.dateDataGridViewTextBoxColumn.Width = 74;
             // 
             // sumDataGridViewTextBoxColumn
@@ -140,6 +147,7 @@
             this.sumDataGridViewTextBoxColumn.HeaderText = "Сумма";
             this.sumDataGridViewTextBoxColumn.Name = "sumDataGridViewTextBoxColumn";
             this.sumDataGridViewTextBoxColumn.ReadOnly = true;
+            this.sumDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             this.sumDataGridViewTextBoxColumn.Width = 50;
             // 
             // employeeIDDataGridViewTextBoxColumn
@@ -206,6 +214,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(682, 453);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(700, 400);
             this.Name = "EventTableForm";
             this.ShowIcon = false;

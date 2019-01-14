@@ -33,13 +33,18 @@ namespace TradeUnion
             return DB.Query<Employee>("SELECT * FROM Employee WHERE IsFired = 0");
         }
 
-        public List<ExtendedEvent> GetAllEvent()
+        public List<ExtendedEvent> GetAllExtendedEvents()
         {
             return DB.Query<ExtendedEvent>(
                 "SELECT Event.ID ID, Title, Date, Sum, Employee.Name EmployeeName, Employee.Inn EmployeeInn, Employee.ID EmployeeID " +
                 "FROM Event " +
                 "LEFT JOIN Employee ON Event.EmployeeID = Employee.ID"
             );
+        }
+
+        public List<Event> GetAllEvents()
+        {
+            return DB.Query<Event>("SELECT * FROM Event FROM Event ");
         }
 
         public int Insert(object obj)

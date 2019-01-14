@@ -136,24 +136,26 @@
             this.saveEmpBtn.Margin = new System.Windows.Forms.Padding(4);
             this.saveEmpBtn.Name = "saveEmpBtn";
             this.saveEmpBtn.Size = new System.Drawing.Size(90, 30);
-            this.saveEmpBtn.TabIndex = 4;
+            this.saveEmpBtn.TabIndex = 3;
             this.saveEmpBtn.Text = "Сохранить";
             this.saveEmpBtn.UseVisualStyleBackColor = true;
             this.saveEmpBtn.Click += new System.EventHandler(this.OnChangesAccepted);
             // 
             // EmployeeEditForm
             // 
+            this.AcceptButton = this.saveEmpBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = CancelButton;
             this.ClientSize = new System.Drawing.Size(432, 126);
             this.Controls.Add(this.tableLayoutPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EmployeeEditForm";
             this.ShowIcon = false;
             this.Text = "Сотрудник";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDownEmployeeEditForm);
             this.tableLayoutPanel.ResumeLayout(false);
             this.tableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);

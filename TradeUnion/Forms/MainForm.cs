@@ -29,7 +29,7 @@ namespace TradeUnion.Forms
             {
                 empListBox.Items.Add(emp);
             });
-            eventTable.Event = storage.GetAllEvent();
+            eventTable.Event = storage.GetAllExtendedEvents();
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -47,6 +47,25 @@ namespace TradeUnion.Forms
         private void OnEmployeeSelectionChanged(object sender, EventArgs e)
         {
             editEmployee.Enabled = deleteEmployee.Enabled = createEvent.Enabled = empListBox.SelectedItem != null;
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.Control | Keys.N:
+                    OnCreateEmployee(this, new EventArgs());
+                    return true;
+                case Keys.Delete:
+                    if (deleteEmployee.Enabled)
+                    {
+                        OnDeleteEmployee(this, new EventArgs());
+                        return true;
+                    }
+                    else return base.ProcessCmdKey(ref msg, keyData);
+                default:
+                    return base.ProcessCmdKey(ref msg, keyData);
+            }
         }
 
         private void OnCreateEmployee(object sender, EventArgs e)
@@ -92,14 +111,6 @@ namespace TradeUnion.Forms
             });
         }
 
-        private void OnSerchEmployeeKeyEnter(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                OnSearchEmployee(sender, e);
-            }
-        }
-
         private void OnCreateEvent(object sender, EventArgs e)
         {
             eventEditor.Employee = empListBox.SelectedItem as Employee;
@@ -114,14 +125,6 @@ namespace TradeUnion.Forms
         private void OnShowEventTable(object sender, EventArgs e)
         {
             eventTable.ShowDialog();
-        }
-
-        private void OnKeyDownListBox(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                OnCreateEmployee(sender, e);
-            }
         }
     }
 }

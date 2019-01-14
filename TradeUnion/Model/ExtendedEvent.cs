@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel;
+using Microsoft.Office.Interop.Excel;
 
 namespace TradeUnion.Model
 {
