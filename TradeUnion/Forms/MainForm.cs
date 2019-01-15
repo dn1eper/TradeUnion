@@ -30,6 +30,7 @@ namespace TradeUnion.Forms
                 empListBox.Items.Add(emp);
             });
             eventTable.Event = storage.GetAllExtendedEvents();
+            CountEmpLabel.Text = "Всего сотрудников: " + employees.Count;
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -74,8 +75,10 @@ namespace TradeUnion.Forms
             if (employeeEditor.ShowDialog() == DialogResult.OK)
             {
                 empListBox.Items.Add(employeeEditor.Employee);
+                employees.Add(employeeEditor.Employee);
                 empListBox.SelectedItem = employeeEditor.Employee;
                 storage.Insert(employeeEditor.Employee);
+                CountEmpLabel.Text = "Всего сотрудников: " + employees.Count;
             }
         }
 
@@ -97,6 +100,8 @@ namespace TradeUnion.Forms
                 emp.IsFired = 1;
                 storage.Update(emp);
                 empListBox.DeleteSelectedItems();
+                employees.Remove(emp);
+                CountEmpLabel.Text = "Всего сотрудников: " + employees.Count;
             }
         }
 

@@ -43,6 +43,7 @@
             this.empListBox = new System.Windows.Forms.ListBox();
             this.empSearchTextBox = new System.Windows.Forms.TextBox();
             this.createEvent = new System.Windows.Forms.Button();
+            this.CountEmpLabel = new System.Windows.Forms.Label();
             contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             addEmployee = new System.Windows.Forms.ToolStripMenuItem();
             menuStrip = new System.Windows.Forms.MenuStrip();
@@ -105,7 +106,7 @@
             menuStrip.Name = "menuStrip";
             menuStrip.Size = new System.Drawing.Size(682, 28);
             menuStrip.TabIndex = 3;
-            menuStrip.Text = "menuStrip";
+            menuStrip.Text = "Нет сотрудников";
             // 
             // файлToolStripMenuItem
             // 
@@ -134,9 +135,9 @@
             // 
             empPlusBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             empPlusBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            empPlusBtn.Location = new System.Drawing.Point(651, 3);
+            empPlusBtn.Location = new System.Drawing.Point(649, 3);
             empPlusBtn.Name = "empPlusBtn";
-            empPlusBtn.Size = new System.Drawing.Size(28, 339);
+            empPlusBtn.Size = new System.Drawing.Size(30, 341);
             empPlusBtn.TabIndex = 4;
             empPlusBtn.Text = "+";
             empPlusBtn.UseVisualStyleBackColor = true;
@@ -148,7 +149,7 @@
             tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.57338F));
             tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.42662F));
             tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 67F));
-            tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             tableLayoutPanel.Controls.Add(this.empListBox, 0, 0);
             tableLayoutPanel.Controls.Add(this.empSearchTextBox, 1, 1);
             tableLayoutPanel.Controls.Add(this.createEvent, 0, 1);
@@ -158,9 +159,8 @@
             tableLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
             tableLayoutPanel.Name = "tableLayoutPanel";
             tableLayoutPanel.RowCount = 2;
-            tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90.33942F));
-            tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.660574F));
-            tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             tableLayoutPanel.Size = new System.Drawing.Size(682, 383);
             tableLayoutPanel.TabIndex = 4;
             // 
@@ -176,7 +176,7 @@
             this.empListBox.ItemHeight = 22;
             this.empListBox.Location = new System.Drawing.Point(3, 3);
             this.empListBox.Name = "empListBox";
-            this.empListBox.Size = new System.Drawing.Size(642, 334);
+            this.empListBox.Size = new System.Drawing.Size(640, 334);
             this.empListBox.Sorted = true;
             this.empListBox.TabIndex = 1;
             this.empListBox.SelectedIndexChanged += new System.EventHandler(this.OnEmployeeSelectionChanged);
@@ -187,23 +187,31 @@
             tableLayoutPanel.SetColumnSpan(this.empSearchTextBox, 3);
             this.empSearchTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.empSearchTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.5F);
-            this.empSearchTextBox.Location = new System.Drawing.Point(146, 348);
+            this.empSearchTextBox.Location = new System.Drawing.Point(145, 350);
             this.empSearchTextBox.Name = "empSearchTextBox";
-            this.empSearchTextBox.Size = new System.Drawing.Size(533, 29);
+            this.empSearchTextBox.Size = new System.Drawing.Size(534, 29);
             this.empSearchTextBox.TabIndex = 1;
             this.empSearchTextBox.TextChanged += new System.EventHandler(this.OnSearchEmployee);
             // 
             // createEvent
             // 
-            this.createEvent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.createEvent.Enabled = false;
-            this.createEvent.Location = new System.Drawing.Point(3, 348);
+            this.createEvent.Location = new System.Drawing.Point(3, 350);
             this.createEvent.Name = "createEvent";
-            this.createEvent.Size = new System.Drawing.Size(137, 32);
+            this.createEvent.Size = new System.Drawing.Size(136, 30);
             this.createEvent.TabIndex = 3;
             this.createEvent.Text = "Оказать помощь";
             this.createEvent.UseVisualStyleBackColor = true;
             this.createEvent.Click += new System.EventHandler(this.OnCreateEvent);
+            // 
+            // CountEmpLabel
+            // 
+            this.CountEmpLabel.AutoSize = true;
+            this.CountEmpLabel.Location = new System.Drawing.Point(504, 7);
+            this.CountEmpLabel.Name = "CountEmpLabel";
+            this.CountEmpLabel.Size = new System.Drawing.Size(120, 17);
+            this.CountEmpLabel.TabIndex = 6;
+            this.CountEmpLabel.Text = "Нет сотрудников";
             // 
             // Main
             // 
@@ -211,6 +219,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(682, 411);
+            this.Controls.Add(this.CountEmpLabel);
             this.Controls.Add(tableLayoutPanel);
             this.Controls.Add(menuStrip);
             this.MinimumSize = new System.Drawing.Size(700, 400);
@@ -236,6 +245,7 @@
         private System.Windows.Forms.Button createEvent;
         private System.Windows.Forms.ListBox empListBox;
         private System.Windows.Forms.TextBox empSearchTextBox;
+        private System.Windows.Forms.Label CountEmpLabel;
     }
 }
 

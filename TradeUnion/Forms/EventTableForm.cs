@@ -83,9 +83,8 @@ namespace TradeUnion.Forms
             workBook = excelApp.Workbooks.Add();
             workSheet = (Excel.Worksheet)workBook.Worksheets.get_Item(1);
 
-            workSheet.Columns[1].ColumnWidth = 24;
-            workSheet.Columns[3].ColumnWidth = 20;
-            workSheet.Columns[5].ColumnWidth = 10;
+            workSheet.Columns[1].ColumnWidth = 22;
+            workSheet.Columns[2].ColumnWidth = 10;
 
             workSheet.Cells[1, 1] = "ФИО";
             workSheet.Cells[1, 2] = "ИНН";
